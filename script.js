@@ -25,14 +25,18 @@ function rightColor() {
   colorOption.style.backgroundColor = `rgb${rgb.innerText}`;
 }
 
-// choose a color
+// choose a color and scoring
 const answer = document.getElementById('answer');
 let selectColor = '';
+let points = 0;
 function gameText() {
+  const score = document.getElementById('score');
   if (selectColor === '') {
     answer.innerText = 'Escolha uma cor';
   } else if (selectColor === `rgb${rgb.innerText}`) {
     answer.innerText = 'Acertou!';
+    points += 3;
+    score.innerText = points;
   } else {
     answer.innerText = 'Errou! Tente novamente!';
   }
