@@ -1,7 +1,23 @@
-#title {
+header {
   text-align: center;
+  padding: 10px;
 }
 
 main {
   text-align: center;
+  border: 1px solid black;
+}
+
+#rgb {
+  font-size: 20px;
+}
+
+.ball {
+  display: inline-block;
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  border-radius: 100%;
+  box-shadow: 0 0 1em gray;
 }
