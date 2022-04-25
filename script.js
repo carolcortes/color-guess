@@ -1,11 +1,13 @@
 console.log('Olá, mundo!');
 
 // create random guess
+function randomColor() {
+  return Math.floor(Math.random() * 255);
+}
 const rgb = document.getElementById('rgb');
 function randomRGB() {
-  rgb.innerText = `(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+  rgb.innerText = `(${randomColor()}, ${randomColor()}, ${randomColor()})`;
 }
-randomRGB();
 
 // create colors
 const colors = document.getElementById('colors');
@@ -14,7 +16,7 @@ function newColors() {
     const colorDiv = document.createElement('div');
     colorDiv.className = 'ball';
     colors.appendChild(colorDiv);
-    const rgbColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+    const rgbColor = `rgb(${randomColor()}, ${randomColor()}, ${randomColor()})`;
     colorDiv.style.backgroundColor = rgbColor;
   }
 }
@@ -22,8 +24,6 @@ function rightColor() {
   const colorOption = document.getElementsByClassName('ball')[Math.floor(Math.random() * 6)];
   colorOption.style.backgroundColor = `rgb${rgb.innerText}`;
 }
-newColors();
-rightColor();
 
 // choose a color
 const answer = document.getElementById('answer');
@@ -37,7 +37,6 @@ function gameText() {
     answer.innerText = 'Errou! Tente novamente!';
   }
 }
-gameText();
 
 const ball = document.getElementsByClassName('ball');
 function select(event) {
@@ -49,7 +48,6 @@ function listeningBall() {
     ball[index].addEventListener('click', select);
   }
 }
-listeningBall();
 
 // new colors
 const resetButton = document.getElementById('reset-game');
@@ -63,3 +61,11 @@ function resetGame() {
   gameText();
 }
 resetButton.addEventListener('click', resetGame);
+
+window.onload = () => {
+  randomRGB();
+  newColors();
+  rightColor();
+  gameText();
+  listeningBall();
+};
