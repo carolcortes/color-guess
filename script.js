@@ -13,8 +13,28 @@ for (let index = 0; index < 6; index += 1) {
   const rgbColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
   colorDiv.style.backgroundColor = rgbColor;
 }
-
-// select answer
 const colorOption = document.getElementsByClassName('ball')[Math.floor(Math.random() * 6)];
 colorOption.style.backgroundColor = `rgb${rgb.innerText}`;
-colorOption.id = 'answer';
+
+// choose a color
+const answer = document.getElementById('answer');
+let selectColor = '';
+function gameText() {
+  if (selectColor === '') {
+    answer.innerText = 'Escolha uma cor';
+  } else if (selectColor === colorOption.style.backgroundColor) {
+    answer.innerText = 'Acertou!';
+  } else {
+    answer.innerText = 'Errou! Tente novamente!';
+  }
+}
+gameText();
+
+const ball = document.getElementsByClassName('ball');
+function select(event) {
+  selectColor = event.target.style.backgroundColor;
+  gameText();
+}
+for (let index = 0; index < ball.length; index += 1) {
+  ball[index].addEventListener('click', select);
+}
